@@ -2,14 +2,13 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
 class MacTime:
-    epoch = datetime(
+    EPOCH = datetime(
         year=1904,
         month=1,
         day=1,
     )
 
-    @staticmethod
-    def to_datetime(seconds: float) -> datetime:
-        return MacTime.epoch + timedelta(seconds=seconds)
+    @classmethod
+    def to_datetime(cls, seconds: float) -> datetime:
+        return MacTime.EPOCH + timedelta(seconds=seconds)
