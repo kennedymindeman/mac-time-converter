@@ -9,6 +9,7 @@ class MacTime:
         day=1,
     )
 
-    @classmethod
-    def to_datetime(cls, seconds: float) -> datetime:
-        return MacTime.EPOCH + timedelta(seconds=seconds)
+def to_datetime(cls, seconds: float) -> datetime:
+    return EPOCH + timedelta(seconds=seconds)
+
+def from_data

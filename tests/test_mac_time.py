@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
-from src.mac_time_converter.mac_time import MacTime
+import src.mac_time_converter.mac_time as mac_time
 
 
 def test_mac_to_datetime_at_epoch() -> None:
-    assert MacTime.to_datetime(0) == MacTime.EPOCH
+    assert mac_time.to_datetime(0) == mac_time.EPOCH
