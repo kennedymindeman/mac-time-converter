@@ -1,5 +1,3 @@
-import pytest
-from datetime import datetime
 import src.mac_time_converter.mac_time as mac_time
 
 
