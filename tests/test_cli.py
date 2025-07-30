@@ -8,6 +8,11 @@ def get_to_datetime_on_epoch_result() -> Result:
     return CliRunner().invoke(cli, ["to-datetime", "0", "--timezone", "UTC"])
 
 
+@pytest.fixture(name="to_datetime_on_invalid_timezone_result")
+def get_to_datetime_on_invalid_timezone_result() -> Result:
+    return CliRunner().invoke(cli, ["to-datetime", "0", "--timezone", "BAD"])
+
+
 def test_epoch_utc_exits_without_error(to_datetime_on_epoch_result) -> None:
     assert to_datetime_on_epoch_result.exit_code == 0
 
@@ -29,6 +34,5 @@ def test_utc_is_not_the_timezone_when_no_timezone_is_passed() -> None:
     assert "UTC" not in result.output
 
 
-def test_invalid_timezone() -> None:
-    result = CliRunner().invoke(cli, ["to-datetime", "0", "--timezone", "BAD"])
-    assert result.exit_code != 0
+def test_invalid_timezone_exit_code(to_datetime_on_invalid_timezone_result) -> None:
+    assert to_datetime_on_invalid_timezone_result.exit_code != 0
