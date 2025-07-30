@@ -18,3 +18,7 @@ def test_epoch_utc_has_date_in_output(to_datetime_on_epoch_result) -> None:
 
 def test_epoch_utc_has_time_in_output(to_datetime_on_epoch_result) -> None:
     assert "00:00:00" in to_datetime_on_epoch_result.output
+
+
+def test_epoch_utc_has_utc_in_output(to_datetime_on_epoch_result) -> None:
+    assert "UTC" in to_datetime_on_epoch_result.output
