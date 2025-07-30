@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import src.mac_time_converter.mac_time as mac_time
 
 
@@ -19,5 +19,6 @@ def test_round_trip() -> None:
         year=2022,
         month=2,
         day=2,
+        tzinfo=timezone.utc,
     )
     assert mac_time.to_datetime(mac_time.from_datetime(dt)) == dt
