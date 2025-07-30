@@ -1,6 +1,5 @@
 import click
-from datetime import datetime
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from . import mac_time
 
 
@@ -13,9 +12,18 @@ def cli():
 @click.argument("timestamp", type=float)
 @click.option("--timezone", "timezone_code")
 def to_datetime(timestamp: float, timezone_code: str) -> None:
-    if timezone_code:
-        timezone = ZoneInfo(timezone_code)
+    try:
+        timezone = get_timezone(timezone_code)
+    except ZoneInfoNotFoundError:
+        click.echo(f"Error: Unknown timezone '{timezone_code}'", err=True)
+        click.echo("Try 'UTC', 'US/Eastern', 'Europe/London', etc.", err=True)
+        raise click.Abort()
     else:
-        timezone = datetime.now().astimezone().tzinfo
-    dt = mac_time.to_datetime(timestamp).astimezone(timezone)
-    click.echo(dt.strftime("%A %B %d, %Y at %H:%M:%S %Z"))
+        dt = mac_time.to_datetime(timestamp).astimezone(timezone)
+        click.echo(dt.strftime("%A %B %d, %Y at %H:%M:%S %Z"))
+
+
+def get_timezone(timezone_code: str) -> ZoneInfo | None:
+    if not timezone_code:
+        return None
+    return ZoneInfo(timezone_code)
