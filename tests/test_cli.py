@@ -36,3 +36,7 @@ def test_utc_is_not_the_timezone_when_no_timezone_is_passed() -> None:
 
 def test_invalid_timezone_exit_code(to_datetime_on_invalid_timezone_result) -> None:
     assert to_datetime_on_invalid_timezone_result.exit_code != 0
+
+
+def test_invalid_timezone_has_no_output(to_datetime_on_invalid_timezone_result) -> None:
+    assert not to_datetime_on_invalid_timezone_result.output
