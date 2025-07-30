@@ -31,4 +31,4 @@ def test_utc_is_not_the_timezone_when_no_timezone_is_passed() -> None:
 
 def test_invalid_timezone() -> None:
     result = CliRunner().invoke(cli, ["to-datetime", "0", "--timezone", "BAD"])
-    assert "UTC" not in result.output
+    assert result.exit_code != 0
