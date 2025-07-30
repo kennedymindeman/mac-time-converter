@@ -9,3 +9,7 @@ EPOCH = datetime(
 
 def to_datetime(seconds: float) -> datetime:
     return EPOCH + timedelta(seconds=seconds)
+
+
+def from_datetime(dt: datetime) -> float:
+    return (dt - EPOCH).total_seconds()
