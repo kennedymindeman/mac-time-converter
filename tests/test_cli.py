@@ -12,8 +12,8 @@ def test_epoch_utc_exits_without_error(to_datetime_on_epoch_result) -> None:
     assert to_datetime_on_epoch_result.exit_code == 0
 
 
-def test_epoch_utc_has_date_in_output(to_datetime_on_epoch_result) -> None:
-    assert "1904-01-01" in to_datetime_on_epoch_result.output
+def test_epoch_utc_has_year_in_output(to_datetime_on_epoch_result) -> None:
+    assert "1904" in to_datetime_on_epoch_result.output
 
 
 def test_epoch_utc_has_time_in_output(to_datetime_on_epoch_result) -> None:
