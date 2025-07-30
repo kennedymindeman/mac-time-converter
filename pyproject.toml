@@ -5,7 +5,7 @@ description = ""
 authors = [{ name = "Kennedy Mindeman", email = "kennedymindeman@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = ["click>=8.0"]
 
 [tool.poetry]
 packages = [{ include = "mac_time_converter", from = "src" }]
