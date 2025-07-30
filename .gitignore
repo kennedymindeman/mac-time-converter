@@ -1,0 +1,8 @@
+*
+!**/
+!**/*.py
+!.gitignore
+!pyproject.toml
+!README.md
+
+**/__pycache__/
