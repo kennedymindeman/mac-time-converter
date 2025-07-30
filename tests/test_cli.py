@@ -22,3 +22,8 @@ def test_epoch_utc_has_time_in_output(to_datetime_on_epoch_result) -> None:
 
 def test_epoch_utc_has_utc_in_output(to_datetime_on_epoch_result) -> None:
     assert "UTC" in to_datetime_on_epoch_result.output
+
+
+def test_utc_is_not_the_timezone_when_no_timezone_is_passed() -> None:
+    result = CliRunner().invoke(cli, ["to-datetime", "0"])
+    assert "UTC" not in result.output
