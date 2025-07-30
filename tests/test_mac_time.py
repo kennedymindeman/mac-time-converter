@@ -1,3 +1,4 @@
+from datetime import timedelta
 import src.mac_time_converter.mac_time as mac_time
 
 
@@ -7,3 +8,7 @@ def test_mac_to_datetime_at_epoch() -> None:
 
 def test_datetime_to_mac_at_epoch() -> None:
     assert mac_time.from_datetime(mac_time.EPOCH) == 0
+
+
+def test_one_second_after_epoch() -> None:
+    assert mac_time.from_datetime(mac_time.EPOCH + timedelta(seconds=1)) == 1
