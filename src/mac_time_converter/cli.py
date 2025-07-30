@@ -1,5 +1,5 @@
 import click
-import src.mac_time_converter.mac_time as mac_time
+from . import mac_time
 
 
 @click.group()
