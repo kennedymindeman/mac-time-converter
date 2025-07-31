@@ -27,3 +27,9 @@ def get_timezone(timezone_code: str) -> ZoneInfo | None:
     if not timezone_code:
         return None
     return ZoneInfo(timezone_code)
+
+
+@cli.command()
+@click.argument("time_str")
+def to_mac() -> None:
+    pass
