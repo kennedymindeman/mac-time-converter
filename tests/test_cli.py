@@ -49,3 +49,7 @@ def test_invalid_timezone_has_error_output(to_datetime_on_invalid_timezone_resul
 
 def test_from_datetime_does_not_default_to_utc(from_datetime_epoch_result) -> None:
     assert "UTC" not in from_datetime_epoch_result.output
+
+
+def test_from_datetime_does_not_raise_error(from_datetime_epoch_result) -> None:
+    assert "Error" not in from_datetime_epoch_result.output
