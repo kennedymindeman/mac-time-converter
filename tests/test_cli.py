@@ -13,8 +13,8 @@ def get_to_datetime_on_invalid_timezone_result() -> Result:
     return CliRunner().invoke(cli, ["to-datetime", "0", "--timezone", "BAD"])
 
 
-@pytest.fixture(name="from_datetime_epoch_result")
-def get_from_datetime_epoch_result() -> Result:
+@pytest.fixture(name="to_mac_epoch_result")
+def get_to_mac_epoch_result() -> Result:
     return CliRunner().invoke(cli, ["to-mac", "Janurary 1 1904"])
 
 
@@ -47,9 +47,9 @@ def test_invalid_timezone_has_error_output(to_datetime_on_invalid_timezone_resul
     assert "Error" in to_datetime_on_invalid_timezone_result.output
 
 
-def test_from_datetime_does_not_default_to_utc(from_datetime_epoch_result) -> None:
-    assert "UTC" not in from_datetime_epoch_result.output
+def test_to_mac_epoch_does_not_default_to_utc(to_mac_epoch_result) -> None:
+    assert "UTC" not in to_mac_epoch_result.output
 
 
-def test_from_datetime_does_not_raise_error(from_datetime_epoch_result) -> None:
-    assert "Error" not in from_datetime_epoch_result.output
+def test_to_mac_epoch_does_not_raise_error(to_mac_epoch_result) -> None:
+    assert "Error" not in to_mac_epoch_result.output
