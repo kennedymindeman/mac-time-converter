@@ -15,7 +15,7 @@ def get_to_datetime_on_invalid_timezone_result() -> Result:
 
 @pytest.fixture(name="from_datetime_epoch_result")
 def get_from_datetime_epoch_result() -> Result:
-    return CliRunner().invoke(cli, ["from-datetime", "Janurary 1 1904"])
+    return CliRunner().invoke(cli, ["to-mac", "Janurary 1 1904"])
 
 
 def test_epoch_utc_exits_without_error(to_datetime_on_epoch_result) -> None:
